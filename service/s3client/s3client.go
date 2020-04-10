@@ -9,7 +9,7 @@ import (
 	"io"
 	"log"
 
-	"../config"
+	"mecovid19data/service/config"
 )
 
 var sess *session.Session

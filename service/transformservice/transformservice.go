@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"../dataservice"
+	"mecovid19data/service/dataservice"
 )
 
 type Data struct {

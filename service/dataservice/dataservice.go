@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"../s3client"
+	"mecovid19data/service/s3client"
 )
 
 func Get() ([]Record, error) {

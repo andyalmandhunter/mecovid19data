@@ -3,7 +3,7 @@ package transformservice
 import (
 	"time"
 
-	"../dataservice"
+	"mecovid19data/service/dataservice"
 )
 
 type Dates map[string]Counties

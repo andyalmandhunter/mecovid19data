@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"../dataservice"
+	"mecovid19data/service/dataservice"
 )
 
 func TestParseToDict(t *testing.T) {

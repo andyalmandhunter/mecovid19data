@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"./cache"
-	"./transformservice"
+	"mecovid19data/service/cache"
+	"mecovid19data/service/transformservice"
 )
 
 func handle(r *http.Request) (*transformservice.Data, error) {

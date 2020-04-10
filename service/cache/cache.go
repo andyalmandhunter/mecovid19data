@@ -4,9 +4,9 @@ import (
 	"log"
 	"time"
 
-	"../config"
-	"../dataservice"
-	"../transformservice"
+	"mecovid19data/service/config"
+	"mecovid19data/service/dataservice"
+	"mecovid19data/service/transformservice"
 )
 
 type requestType uint
