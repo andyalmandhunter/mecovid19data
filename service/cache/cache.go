@@ -1,6 +1,8 @@
 package cache
 
 import (
+	"log"
+
 	"mecovid19data/service/transformservice"
 )
 
@@ -17,7 +19,6 @@ var value transformservice.Data
 func init() {
 	requestChannel = make(chan request)
 	value.Dates = make([]transformservice.Date, 0)
-	go run()
 }
 
 type request struct {
@@ -25,7 +26,9 @@ type request struct {
 	C    chan transformservice.Data
 }
 
-func run() {
+func Run() {
+	log.Println("Starting cache")
+
 	for {
 		request := <-requestChannel
 		switch request.Type {

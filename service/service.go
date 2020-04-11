@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"mecovid19data/service/cache"
 	"mecovid19data/service/config"
 	"mecovid19data/service/refreshservice"
 )
@@ -11,6 +12,8 @@ import (
 const port = "8080"
 
 func main() {
+	go cache.Run()
+
 	rs := refreshservice.New(config.PollingPeriod)
 	go rs.Run()
 
