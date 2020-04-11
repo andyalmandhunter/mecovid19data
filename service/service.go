@@ -3,11 +3,17 @@ package main
 import (
 	"log"
 	"net/http"
+
+	"mecovid19data/service/config"
+	"mecovid19data/service/refreshservice"
 )
 
 const port = "8080"
 
 func main() {
+	rs := refreshservice.New(config.PollingPeriod)
+	go rs.Run()
+
 	http.HandleFunc("/api/v0/countydata.json", jsonContent(jsonHandler))
 	http.HandleFunc("/api/v0/countydata.csv", csvContent(csvHandler))
 

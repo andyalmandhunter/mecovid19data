@@ -1,11 +1,6 @@
 package cache
 
 import (
-	"log"
-	"time"
-
-	"mecovid19data/service/config"
-	"mecovid19data/service/dataservice"
 	"mecovid19data/service/transformservice"
 )
 
@@ -23,7 +18,6 @@ func init() {
 	requestChannel = make(chan request)
 	value.Dates = make([]transformservice.Date, 0)
 	go run()
-	go poll()
 }
 
 type request struct {
@@ -43,23 +37,10 @@ func run() {
 	}
 }
 
-func poll() {
-	log.Printf("Refreshing cache every %v", config.PollingPeriod)
-
-	for {
-		rawData, err := dataservice.Get()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		data := transformservice.Parse(rawData)
-
-		c := make(chan transformservice.Data)
-		requestChannel <- request{set, c}
-		c <- *data
-
-		time.Sleep(config.PollingPeriod)
-	}
+func Set(data transformservice.Data) {
+	c := make(chan transformservice.Data)
+	requestChannel <- request{set, c}
+	c <- data
 }
 
 func Get() transformservice.Data {
