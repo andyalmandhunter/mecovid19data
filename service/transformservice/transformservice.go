@@ -81,9 +81,12 @@ func (data *Data) FilterCounty(c string) Data {
 
 	for _, date := range data.Dates {
 		filteredDate := Date{Date: date.Date}
+		filteredDate.Counties = make([]County, 0, 1)
+
 		for _, county := range date.Counties {
 			if strings.ToLower(county.County) == countyStr {
 				filteredDate.Counties = append(filteredDate.Counties, county)
+				break
 			}
 		}
 
